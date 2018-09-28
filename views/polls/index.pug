@@ -1,0 +1,6 @@
+extends ../layout
+
+block content
+  h1= polls
+  if(polls == [])
+    h4= 'There are no polls to show'
