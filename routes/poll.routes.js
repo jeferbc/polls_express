@@ -1,7 +1,7 @@
 module.exports = (app) => {
     const polls = require('../controllers/poll.controller.js');
     // Render poll form
-    app.get('/polls/new', polls.create);
+    app.get('/polls/new', polls.new);
 
     // Create a new poll
     app.post('/polls', polls.create);
@@ -20,4 +20,10 @@ module.exports = (app) => {
 
     // Delete a poll with pollId
     app.delete('/polls/:pollId', polls.delete);
+
+    // vote
+    app.post('/polls/:pollId/vote', polls.vote);
+
+    // results
+    app.get('/polls/:pollId/results', polls.results);
 }

@@ -41,7 +41,7 @@ exports.createSession = (req, res, next) => {
         return next(loginErr);
       }
       console.log(user)
-      req.app.locals.user = user.username;
+      req.app.locals.user = user;
       console.log(req.app.locals)
       return res.redirect('/');
     });

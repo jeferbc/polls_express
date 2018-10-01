@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
   .container
@@ -18,9 +18,9 @@ block content
             input.form-control(type='area', name="description", placeholder='Description', required)
           h4 Options
             .form-group
-              input.form-control(type='text', name="option1", placeholder='Opcion 1', required)
+              input.form-control(type='text', name="options[0][name]", placeholder='Opcion 1', required)
             .form-group
-              input.form-control(type='text', name="option2", placeholder='Opcion 2', required)
+              input.form-control(type='text', name="options[1][name]", placeholder='Opcion 2', required)
 
           button.btn.btn-default(type='submit') Submit&nbsp;
           a(href='/')
