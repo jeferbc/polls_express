@@ -12,15 +12,18 @@ exports.create = (req, res) => {
   poll.save( (error, poll) => {
     if(error){
       res.render('polls/new_poll', { error: error.message })
-    }else
+    }else{
+      req.flash('success', 'Poll Created successfully');
       res.redirect('/')
+    }
+
   });
 };
 
 // Retrieve and return all notes from the database.
 exports.findAll = async (req, res) => {
   const polls = await Poll.find()
-  res.render('polls/index', { polls: polls })
+  res.render('polls/index', { polls: polls, message: req.flash('success') })
 };
 
 // Find a single note with a noteId
@@ -30,13 +33,14 @@ exports.findOne = async (req, res) => {
 };
 
 // Delete a note with the specified noteId in the request
-exports.delete = (req, res) => {
-  const poll = Poll.findById(req.params.pollId);
+exports.delete = async (req, res) => {
+  const poll = await Poll.findById(req.params.pollId);
   if(poll.created_by === req.app.locals.user.username) {
-    Poll.deleteOne({ poll });
+    await Poll.deleteOne({ _id: poll._id });
+    req.flash('success', 'Poll deleted successfully');
     res.redirect('/');
   }else{
-    res.redirect('/', { error: 'You cannot delete a poll that is not yours' })
+    res.redirect('/')
   }
 };
 

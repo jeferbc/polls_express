@@ -6,8 +6,7 @@ block content
       .col-sm-6
         .card
           .card-header
-            h4.card-title= poll.title
-            p= poll.description
+            .card-title= poll.description
           .card-body
             form(role='form' action='/polls/' + poll._id + '/vote', method="post")
               each option, i in poll.options

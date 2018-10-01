@@ -1,10 +1,19 @@
 .card
   .card-header
-    h4.card-title= poll.title
+    if (user && user.username == poll.created_by)
+      .row.justify-content-around.align-items-baseline
+        h4.card-title= poll.title
+        a(href='/polls/' + poll._id + '/delete' onclick="return confirm('Are you sure?')" )
+          i.fas.fa-trash-alt
+    else
+      h4.card-title= poll.title
     p.text-muted Creado por #{poll.created_by}
   .card-body
     h6.card-text= poll.description
   .card-footer
     .row.justify-content-around.align-items-baseline
       p.text-muted Votos #{poll.votesCount()}
-      a(href='/polls/' + poll._id).btn.btn-info Vota
+      if (user && user.username == poll.created_by)
+        a(href='/polls/' + poll._id + '/results').btn.btn-info Results
+      else
+        a(href='/polls/' + poll._id).btn.btn-info Vote

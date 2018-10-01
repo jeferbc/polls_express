@@ -7,6 +7,7 @@ const logger = require('morgan');
 const favicon = require('serve-favicon');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
 const app = express();
 
 // view engine setup
@@ -24,6 +25,7 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes

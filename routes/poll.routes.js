@@ -15,11 +15,8 @@ module.exports = (app) => {
     // Render edit poll form
     app.get('/polls/:pollId/edit', polls.create);
 
-    // Update a poll with pollId
-    app.put('/polls/:pollId', polls.update);
-
     // Delete a poll with pollId
-    app.delete('/polls/:pollId', polls.delete);
+    app.get('/polls/:pollId/delete', polls.delete);
 
     // vote
     app.post('/polls/:pollId/vote', polls.vote);
