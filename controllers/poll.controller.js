@@ -56,5 +56,6 @@ exports.vote = async (req, res) => {
 
 exports.results = async (req, res) => {
   const poll = await Poll.findById(req.params.pollId);
-  res.render('polls/results', { poll: poll })
+  const path = (req.protocol + '://' + req.get('host') + '/polls/' + poll._id);
+  res.render('polls/results', { poll: poll, path: path })
 }

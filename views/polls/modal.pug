@@ -1,0 +1,10 @@
+.modal.fade(id="share-link-modal" tabindex="-1" role="dialog" aria-labelledby="share-link-modal" aria-hidden="true")
+  .modal-dialog.modal-dialog-centered(role="document")
+    .modal-content
+      .modal-header
+        h5.modal-title(id="share-link-modal") Share the link
+        button.close(type="button" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times;
+      .modal-body= path
+      .modal-footer
+        button.btn.btn-secondary(type="button" data-dismiss="modal") Close
